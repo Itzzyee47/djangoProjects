@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+    {% load crispy_forms_tags %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <title>TODO</title>
+</head>
+<body>
+    <h1>TO-DO</h1>
+    <div class="main">
+       {% block content %}
+        <form id="form" action="" method="post">
+            <a class="x" onclick="bk()" id="bk" style="margin-left:100%;">x</a>
+          <div class="drop">
+            {% csrf_token %}
+            {{ form }}
+            {% if form.set_date.errors %}
+                <ol class="alert alert-danger">
+               {{ error|escape }}
+                </ol>
+            {% endif %}
+            <button class="s-btn" type="submit">Add Task</button>
+          </div>
+        </form>
+            <button id="x" onclick="add()"> &#128221; Add</button>
+        <ol>
+            {% for t in task %}
+            <li title="{{ t.discription }}"> <a href="update/{{t.id}}"> {{ t.title }} </a> , {{ t.set_date }} <a href="delete/{{ t.id }}" class="x">x</a> </li>
+            {% endfor %}
+         </ol>
+       {% endblock %}
+    </div>
+</body>
+<script src="{% static 'js/index.js' %}"></script>
+</html>

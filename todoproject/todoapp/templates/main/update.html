@@ -1,0 +1,12 @@
+{% extends "main/index.html" %}
+{% block content %}
+
+   <form id="upform" method="post">
+
+    {% csrf_token %}
+    {{ form }}
+    <button class="s-btn" type="submit">Add Task</button>
+
+   </form>
+
+{% endblock %}
