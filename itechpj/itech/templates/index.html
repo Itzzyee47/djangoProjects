@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+    {% load crispy_forms_tags %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <title>Register</title>
+</head>
+<body>
+   {% block content %}
+        <h1>REGISTRATION_PAGE</h1>
+
+        <form method="post" id="regform" name="regform">
+            {% csrf_token %}
+            <!-- {{ form }} -->
+             {{ form.user_name }}
+             {{ form.email }}
+             {{ form.password }}
+             {{ form.confrim_password }}
+            <button type="submit">Register</button>
+
+            <a href="login" style="text-align: center; text-decoration:none;color:aqua; ">login</a>
+        </form>
+        <p style="color:red; text-align:center" id="error">
+            {{ message }}
+        </p>
+
+        <script src="{% static 'js/index.js' %}"></script>
+   {% endblock %}
+</body>
+</html>

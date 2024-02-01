@@ -1,0 +1,22 @@
+{% extends "home.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/post.css' %}">
+    <div class="feed" style="display: flex; gap:5px; flex-direction:row; ">
+        <img class="himg" src="{{ details.proPic.url }}" > <div class="dt"> {{ user }} <bd>Create new post</bd> </div>
+    </div>
+   <div class="feed">
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.title.label}}: {{ form.title}}
+        {{ form.pic.label}}: {{ form.pic}}
+        <input type="submit" value="POST" class="post-btn">
+       
+    </form>
+    <a href="{% url 'profile' %}"><button>Back</button></a>
+   </div>
+
+
+{% endblock %}

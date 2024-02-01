@@ -1,0 +1,113 @@
+.Pcover{
+    width: 100%;
+    height: 45vh;
+    background-color: #fff;
+    padding: 10px;
+}
+.pP{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 3px solid white;
+}
+.P-dt{
+    position: absolute;
+    top: 30vh;
+    display: flex;
+    flex-direction: row;
+    justify-items: center;
+    align-items: center;
+    font-size: 2rem;
+    color: #fff;
+    text-shadow: 2px 2px 2px black;
+
+}
+.dits{
+    width: fit-content;
+    position: relative;
+    display: flex;
+    gap: 1rem;
+    padding: 15px;
+    left: 20%;
+    font-family: 'Gill Sans', 'Trebuchet MS', sans-serif;
+}
+.dits>div{
+    text-align: center;
+}
+.dits>div>b{
+    color: rgb(29, 1, 93);
+}
+img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 10% 20% ;
+}
+.sect-1{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    width: 23%;
+    height: auto;
+    margin: 5% 14px 8px;
+    padding: 10px 12px;
+    background-color: #fff;
+    word-spacing: 3px;
+    font-family: cursive;
+    font-style: oblique;
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+.abtn{
+    width: 100%;
+    height: 30px;
+    border: none;
+    border-bottom: 1px solid gray;
+    background-color: white;
+}
+.sect-2{
+    position: absolute;
+    left: 13%;
+    width: 50%;
+    margin-top: 4.3%;
+
+}
+.sect-2>.feed{
+    width: 100%;
+}
+.subf{
+    display: flex;
+    width: 96%;
+    height: 40px;
+    margin: 8px;
+}
+.subf>button{
+    width: 50%;
+    height: 100%;
+}
+.ud,.subf{
+    border-bottom: 1px solid gainsboro;
+}
+.upd{
+    display: flex;
+    width: 90%;
+    height: 100%;
+    justify-content: baseline;
+    align-content: baseline;
+    margin: auto 12px;
+}
+.upd>input{
+    width: 70%;
+    height: 28px;
+}
+.upd>a{
+    width: 30%;
+    height: 28px;
+}
+.updb{
+    width: 100%;
+    height: 28px;
+    border: none;
+    background-color: var(--sucess);
+}

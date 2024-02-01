@@ -1,0 +1,44 @@
+*{
+    margin: 4px;
+    padding: 0;
+}
+:root{
+    --bg: rgb(197, 213, 216);
+}
+body{
+    color: black;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--bg);
+}
+form{
+    width: 40%;
+    height: 55vh;
+    padding: 3.5rem 2rem 1.2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    font-size: 2vw;
+    background-color: #fff;
+    box-shadow: 5px 5px 15px black;
+}
+form>input{
+    height: 40px;
+    width: 80%;
+}
+form>button{
+    width: 60%;
+    height: 1.6rem;
+    align-self: center;
+}
+#error{
+    width: 60%;
+    height: 30px;
+    margin: 1.8rem 10px;
+    padding: 9px;
+    text-align: center;
+}

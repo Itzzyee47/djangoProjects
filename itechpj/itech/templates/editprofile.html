@@ -1,0 +1,18 @@
+{% extends 'home.html' %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/eProfile.css' %}">
+
+    <div class="block">
+        <form action="" method="post">
+            {% csrf_token %}
+            {{form.as_p}}
+            {{form.proPic}}
+    
+            <input type="submit" value="UPDATE" class="post-btn">
+            <a href="{% url 'profile' %}"><input type="button" value="Cancel"></a> 
+        </form>
+    </div>
+    
+
+{% endblock %}

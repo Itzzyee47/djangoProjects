@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+</head>
+<body>
+
+    <div class="header">
+         <h2> iTech </h2><sub>social_blog</sub>
+         <nav>
+            <a href="{% url 'home' %}">HOME</a>
+         </nav>
+        <a href="{% url 'profile' %} "> <div class="profile"> {{ user }} <img class="himg" src="{{ details.proPic.url }}" > </div> </a>
+        </div>
+
+    {% block content %}
+    <title>HOME</title>
+        <div class="feed" style="background-color: var(--sucess);">
+           <h4>
+            Welcome  {{  user }} <br> {{ user.email }}
+           </h4>
+        </div>
+
+        <div class="feed">
+           <div class="upd">
+            <img class="himg" src="{{ details.proPic.url }}" > <input type="text" placeholder="Whats on your mind...."><a href="{% url 'Apost' %}"><button>Add post</button></a>
+           </div>
+        </div>
+       {% for post in posts %}
+            <div class="feed">
+
+                <div class="ud">{{ post.aurthor }} <br>
+                <sub_2>{{ post.date}}</sub_2></div>
+                {% if  post.pic %}
+                {{ post.title }}
+                <img class="postPic" src="{{ post.pic.url }}" >
+                {% else %}
+                <div class="contT">
+                 {{ post.title }}
+                </div>
+                {% endif %}
+
+                <div class="subf">
+                    <button data-post-id="{{ post.id }}">Like</button><button id="{{ post.id }}" onclick="viewpost(id)"> Comments</button> {{ likes_count }}
+                </div>
+    
+                <div class="feedB" style="flex-direction: row; width:100%; position:relative; left:0; " >
+                    <img class="himg" src="{{ details.proPic.url }}" >
+    
+                   <form action="" method="POST" style="width: 100%;">
+                    {% csrf_token %}
+                        <div class="upd">
+                            <input type="text" name="content" placeholder="Add a comment...." style="width: 80%;">
+                            <input type="text" name="id" value="{{post.id}}" style="display: none;">
+                                <button data-post-id="{{ post.id }}" type="submit" class="updb" style="width: 20%;">Comment</button>
+                        </div>
+                   </form>
+                </div>
+
+
+            </div>
+
+           
+       {% endfor %}
+        <a id="log" href="{% url 'logout' %}"><button>Log out</button></a>
+
+        <script src="{% static 'js/script.js' %}"></script>
+    {% endblock %}
+</body>
+</html>

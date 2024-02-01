@@ -1,0 +1,95 @@
+{% extends 'home.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+<title>Profile</title>
+<link rel="stylesheet" href="{% static 'css/profile.css' %}">
+    <div class="Pcover">
+        <img src="{{ details.coverPhoto.url }}" >
+            <div class="P-dt">
+                <img class="pP" src="{{ details.proPic.url }}" alt="">
+                {{ request.user }}
+            </div>
+        <div class="dits">
+           <div>
+                <b> POST: </b> <br> {{nPost}}
+           </div>
+           <div>
+                <b> FOLLOWERS: </b> <br> 
+            </div>
+            <div>
+                <b> FOLLOWING: </b> <br>
+            </div>
+        </div>
+    </div>
+
+    <div class="sect-1">
+
+        <h3 style="color: var(--bg-color);">User profile</h3>
+        USERNAME: {{ user.username}} <br>
+        FIRST_AND_LASTNAME: {{ user.first_name}}
+        {{ user.last_name}} <br>
+        EMAIL: {{ user.email}}
+
+        <a href="{% url 'eProfile' %}"><button class="abtn">Edit profile</button></a> <br>
+        <h4  style="color: var(--bg-color);">User details</h4>
+        ABOUT_ME: {{  details.discription }} <br>
+        LOCATION: {{  details.location}} <br>
+        SEX: {{ details.sex}} <br>
+        INTRESTS:
+        <a href="{% url 'eProfileD' %}"><button class="abtn">Edit discriptions</button></a>
+        
+    </div>
+
+    <div class="sect-2">
+
+        <div class="feed" style="flex-direction: row;" >
+            <img class="himg" src="{{ details.proPic.url }}" >
+            <div class="upd">
+                <input type="text" placeholder="Whats on your mind...."><a href="{% url 'Apost' %}"><button class="updb">Add post</button></a>
+            </div>
+        </div>
+
+        {% for post in posts %}
+            <div class="feed">
+
+            <div class="ud">{{ post.aurthor }} <br>
+                <sub_2>{{ post.date}}</sub_2></div>
+                
+                    {% if  post.pic %}
+                    {{ post.title }}
+                    <img class="postPic" src="{{ post.pic.url }}" >
+                    {% else %}
+                    <div class="contT">
+                        {{ post.title }}
+                    </div>
+                    {% endif %}
+
+                <div class="subf">
+                    <button data-post-id="{{ post.id }}">Like</button><button id="{{ post.id }}" onclick="viewpost(id)"> Comments</button> {{ likes_count }}
+                </div>
+
+                <div class="feedB" style="flex-direction: row; width:100%; position:relative; left:0; " >
+                    <img class="himg" src="{{ details.proPic.url }}" >
+
+                   <form action="" method="POST" style="width: 100%;">
+                    {% csrf_token %}
+                        <div class="upd">
+                            <input type="text" name="content" placeholder="Add a comment...." style="width: 80%;">
+                            <input type="text" name="id" value="{{post.id}}" style="display: none;">
+                                <button data-post-id="{{ post.id }}" type="submit" class="updb" style="width: 20%;">Comment</button>
+                        </div>
+                   </form>
+                </div>
+
+
+            </div>
+        {% endfor %}
+    </div>
+    <script>
+        function viewpost(x){
+            console.log("clicked")
+            window.location.assign("viewPost"+"/"+x)
+        }
+    </script>
+{% endblock %}

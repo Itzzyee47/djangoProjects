@@ -1,0 +1,28 @@
+bd{
+    font-size: 0.9rem;
+    font-weight: bold;
+    font-family: cursive;
+    color: var(--bg-color);
+}
+.dt{
+    display: flex;
+    width: 70%;
+    flex-direction: column;
+}
+form{
+    display: flex;
+    flex-direction: column;
+}
+input{
+    margin: 4px 3px;
+}
+.post-btn{
+    height: 30px;
+    background-color: var(--sucess);
+    border: none;
+    border-bottom-left-radius: 13px;
+    border-top-right-radius: 13px;
+}
+.post-btn:hover{
+    box-shadow: 2px 1px 5px black;
+}
